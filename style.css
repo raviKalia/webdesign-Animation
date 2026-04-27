@@ -1,0 +1,269 @@
+/* default attributes for all elements */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* full screen page */
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom, #87ceeb, #dff5ff 35%, #a9e190 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  padding: 0;
+}
+
+/* main game wrapper */
+#gameWrap {
+  /* width: min(100vw, 560px); */
+  height: 100vh;
+  margin: 0 auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* pop-up styles for the game over screen */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.popup.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.popupBox {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  text-align: center;
+
+  transform: scale(0.7);
+  transition: transform 0.3s ease;
+}
+
+.popup.show .popupBox {
+  transform: scale(1);
+}
+
+#restartBtn {
+  margin-top: 15px;
+  padding: 10px 18px;
+  border: none;
+  background: #1d7f35;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+/* pop-up styles end */
+
+/* title */
+#gameTitle {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #133b18;
+  font-size: clamp(24px, 4vw, 34px);
+}
+#playerCar {
+  transition: left 0.5s ease-in-out;
+}
+/* top area */
+#topBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+#scoreBox {
+  font-size: clamp(18px, 3vw, 24px);
+  font-weight: bold;
+  color: #1f2d1f;
+}
+
+#btnRow {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+#startBtn,
+#pauseBtn {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  background: #1d7f35;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+#startBtn:hover,
+#pauseBtn:hover {
+  background: #145c26;
+}
+
+/* game area takes remaining screen height */
+#gameArea {
+  flex: 1;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  overflow: hidden;
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  border: 4px solid #ffffff;
+  background: #7ed957;
+  min-height: 0;
+}
+
+/* side decorations */
+.side {
+  position: relative;
+  background: linear-gradient(to bottom, #7ed957, #5ebb45);
+  overflow: hidden;
+}
+
+/* road */
+#road {
+  position: relative;
+  background: #444;
+  overflow: hidden;
+  border-left: 5px solid #f5f5f5;
+  border-right: 5px solid #f5f5f5;
+}
+
+/* road center lines */
+.roadLine {
+  width: 8px;
+  height: 72px;
+  background: white;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 4px;
+}
+/* road line positions */
+.line1 { top: 0px; }
+.line2 { top: 130px; }
+.line3 { top: 260px; }
+.line4 { top: 390px; }
+.line5 { top: 520px; }
+
+/* player and enemy cars */
+#playerCar,
+#enemyCar {
+  width: clamp(42px, 14%, 62px);
+  height: clamp(72px, 16%, 105px);
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#playerCar {
+  bottom: 18px;
+}
+
+#enemyCar {
+  top: -120px;
+}
+
+/* car images for rendering car car size adjusted.*/
+#playerCar img,
+#enemyCar img {
+  width: 200%;
+  height: 300%;
+  object-fit: contain;
+  display: block;
+}
+
+/* trees and stones are placed in the side areas of the game. */
+.tree {
+  width: 24px;
+  height: 24px;
+  background: #1e7b2c;
+  border-radius: 50%;
+  position: absolute;
+}
+/* tree trunk */
+.tree::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 14px;
+  background: #6b3f1d;
+  left: 8px;
+  top: 18px;
+  border-radius: 3px;
+}
+
+.stone {
+  width: 20px;
+  height: 14px;
+  background: #999;
+  border-radius: 12px;
+  position: absolute;
+}
+
+/* side object positions */
+.tree1 { top: 50px; left: 18px; }
+.tree2 { top: 220px; right: 14px; }
+.tree3 { top: 90px; left: 16px; }
+.tree4 { top: 300px; right: 16px; }
+
+.stone1 { top: 360px; left: 20px; }
+.stone2 { top: 200px; right: 18px; }
+
+/* help text */
+#helpText {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #1a331c;
+}
+
+/* mobile view to make game responsive to smaller screens */
+@media (max-width: 500px) {
+  #gameWrap {
+    width: 100vw;
+    padding: 8px;
+  }
+
+  #topBar {
+    justify-content: center;
+  }
+
+  #btnRow {
+    width: 100%;
+    justify-content: center;
+  }
+
+  #startBtn,
+  #pauseBtn {
+    flex: 1;
+  }
+
+  #helpText {
+    font-size: 13px;
+  }
+}

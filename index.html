@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini Car Racing Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="gameWrap">
+    <h1 id="gameTitle">Car Racing Game</h1>
+
+    <div id="topBar">
+      <div id="scoreBox">Score: <span id="score">0</span></div>
+
+      <div id="btnRow">
+        <button id="startBtn">Start Game</button>
+        <button id="pauseBtn">Pause</button>
+      </div>
+    </div>
+
+    <div id="gameArea">
+      <div class="side leftSide">
+        <div class="tree tree1"></div>
+        <div class="tree tree2"></div>
+        <div class="stone stone1"></div>
+      </div>
+
+      <div id="road">
+        <div class="roadLine line1"></div>
+        <div class="roadLine line2"></div>
+        <div class="roadLine line3"></div>
+        <div class="roadLine line4"></div>
+        <div class="roadLine line5"></div>
+
+        <!-- player car -->
+        <div id="playerCar">
+          <img src="image/player.png" alt="Player Car">
+        </div>
+
+        <!-- obstacle car -->
+        <div id="enemyCar">
+          <img src="image/enemy.png" alt="Enemy Car">
+        </div>
+      </div>
+
+      <div class="side rightSide">
+        <div class="tree tree3"></div>
+        <div class="stone stone2"></div>
+        <div class="tree tree4"></div>
+      </div>
+    </div>
+
+    <p id="helpText">
+      Use Left Arrow and Right Arrow keys to move. Press Pause to stop the game.
+    </p>
+  </div>
+<!-- Game Over Popup  to display score and restart option-->
+    <div id="gameOverPopup" class="popup">
+    <div class="popupBox">
+      <h2>Game Over 🚗</h2>
+      <p>Your Score: <span id="finalScore">0</span></p>
+      <button id="restartBtn">Play Again</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
